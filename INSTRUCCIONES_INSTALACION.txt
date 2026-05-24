@@ -1,0 +1,72 @@
+═══════════════════════════════════════════════════════════════════════════════
+INSTRUCCIONES DE INSTALACIÓN - SE KRAIBE CALCULADORA
+kraibe.cl / www.kraibe.cl
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 1: SUBIR ARCHIVO
+─────────────────────────────────────────────────────────────────────────────
+En el panel CWP → Gestión de archivos → Navegar a: /home/mhzbmrna/www.kraibe.cl/
+
+Subir el archivo: calculadora.html
+(Botón "Subir" en la barra superior del gestor de archivos)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 2: EDITAR index.html
+─────────────────────────────────────────────────────────────────────────────
+En el gestor de archivos, hacer clic en el ícono de edición del archivo index.html
+
+BUSCAR este bloque (la tabla comparativa):
+─────────────────────────────────────────────────────────────────────────────
+
+### Conserje Presencial vs. Remota
+
+(toda la tabla con filas de Disponibilidad, Costo mensual, etc.)
+
+HASTA el cierre de la sección (</section> o </div> correspondiente)
+
+REEMPLAZAR con:
+─────────────────────────────────────────────────────────────────────────────
+
+<!-- CALCULADORA ROI SE KRAIBE -->
+<div style="margin: 40px 0;">
+  <iframe 
+    src="/calculadora.html" 
+    width="100%" 
+    height="820px"
+    frameborder="0"
+    scrolling="no"
+    id="kraibe-calc"
+    style="border: none; border-radius: 16px; display: block;">
+  </iframe>
+</div>
+
+<!-- Script para ajuste automático de altura -->
+<script>
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.height) {
+      document.getElementById('kraibe-calc').style.height = e.data.height + 'px';
+    }
+  });
+</script>
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 3: VERIFICAR
+─────────────────────────────────────────────────────────────────────────────
+Visitar www.kraibe.cl → Sección Conserjería Remota
+La calculadora debe aparecer donde estaba la tabla comparativa.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+MIGRACIÓN A HOSTINGER (próxima semana):
+─────────────────────────────────────────────────────────────────────────────
+Solo copiar los mismos archivos:
+✓ index.html (modificado)
+✓ calculadora.html (nuevo)
+✓ Carpeta assets/ (sin cambios)
+
+La calculadora no tiene dependencias externas — funciona en cualquier hosting.
+Sin Node.js, sin bases de datos, sin APIs externas.
+
+═══════════════════════════════════════════════════════════════════════════════
