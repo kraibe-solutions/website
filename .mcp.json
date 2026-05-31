@@ -1,0 +1,19 @@
+{
+    "mcpServers": {
+        "playwright": {
+            "command": "npx",
+            "args": [
+                "@playwright/mcp@latest",
+                "--headless",
+                "--no-sandbox",
+                "--browser", "chromium",
+                "--executable-path", "${HOME}/.cache/playwright-mcp/chrome",
+                "--isolated",
+                "--viewport-size", "1280x720",
+                "--caps", "testing,devtools",
+                "--ignore-https-errors",
+                "--output-dir", "${HOME}/.cache/playwright-mcp/output"
+            ]
+        }
+    }
+}
