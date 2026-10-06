@@ -1,3 +1,5 @@
+# ponytail: candidato a simplificar cuando se recupere acceso SSH directo al VPS.
+# Hoy es la única vía de deploy funcional.
 name: Deploy VPS
 
 on:

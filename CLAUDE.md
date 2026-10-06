@@ -1,12 +1,14 @@
 # CLAUDE.md — Kraibe Website
-Actualizado: 2026-05-30
 
-## ¿Qué es este proyecto?
+Actualizado: 2026-08-10
+
+## Qué es este proyecto
 
 Sitio web corporativo de Kraibe — kraibe.cl
-Presenta los servicios de SE Kraibe (seguridad, conserjería remota) y Kraibe Solutions (ERP/software).
+HTML/CSS/JS estático servido por nginx en VPS Hostinger.
 
 **Empresa:** Inversiones Kraibe SpA — RUT 78.249.497-K
+**Unidad operativa:** SE Kraibe SpA — RUT 78.254.946-4
 
 ---
 
@@ -14,12 +16,11 @@ Presenta los servicios de SE Kraibe (seguridad, conserjería remota) y Kraibe So
 
 | Capa | Tecnología |
 |------|-----------|
-| Tipo | HTML/CSS/JS estático |
-| Estilos | CSS propio (carpeta css/) |
-| Scripts | JS vanilla (carpeta js/) |
-| Assets | Imágenes, logos (carpeta assets/) |
-| Deploy | Hostinger VPS — nginx — kraibe.cl |
+| Tipo | HTML/CSS/JS estático — sin framework, sin build step |
+| Deploy | GitHub Actions → SSH → `git pull` en VPS Hostinger (187.77.248.142) |
+| Servidor | nginx en VPS |
 | HTTPS | Let's Encrypt (Certbot) |
+| Dominio | kraibe.cl |
 
 ---
 
@@ -27,32 +28,27 @@ Presenta los servicios de SE Kraibe (seguridad, conserjería remota) y Kraibe So
 
 ```
 kraibe-website/
-├── assets/       # Imágenes, logos, iconos
-├── css/          # Estilos
-├── js/           # Scripts
-└── index.html    # (si existe) — página principal
+├── assets/              # Imágenes, logos (vacío por ahora)
+├── docs/                # Documentación de proyecto y migración
+├── .github/workflows/   # Deploy automático a VPS
+├── articulo-cultura-seguridad.html   # Artículo SEO publicado
+└── CLAUDE.md
 ```
 
 ---
 
 ## Deploy
 
-El sitio corre directamente en el VPS Hostinger (187.77.248.142) via nginx.
-No tiene build step — los archivos se sirven estáticos.
+Push a `main` → GitHub Actions ejecuta `git pull origin main` en el VPS via SSH.
 
-```bash
-# Deploy manual via SSH
-scp -r . root@187.77.248.142:/var/www/kraibe.cl/
-
-# O via git pull en el VPS
-ssh root@187.77.248.142
-cd /var/www/kraibe.cl
-git pull origin main
-```
+Secrets requeridos en GitHub:
+- `VPS_HOST`
+- `VPS_USER`
+- `VPS_SSH_KEY`
 
 ---
 
-## Paleta de marca Kraibe
+## Paleta de marca
 
 | Color | Hex | Uso |
 |-------|-----|-----|
@@ -70,11 +66,11 @@ git pull origin main
 1. No agregar frameworks pesados (React, Vue) — es sitio estático intencional.
 2. No commitear imágenes sin optimizar (max 200KB por imagen).
 3. No romper compatibilidad mobile — responsive es obligatorio.
-4. No modificar nginx config directamente en VPS sin documentar.
+4. No modificar nginx config en VPS sin documentar.
+5. No inventar clientes ni métricas — solo los 3 casos verificados (Rozto, Footline, Vía del Río Villuco).
 
 ---
 
 ## Contacto
 
 - **Product Owner:** Gabriel Kraemer — gkraemer@kraibe.cl
-- **Org GitHub:** github.com/kraibe-solutions/website
