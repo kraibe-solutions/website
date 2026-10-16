@@ -1,0 +1,983 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kraibe — CCTV, alarmas, control de acceso y conserjería remota 24/7. SOC propio en Concepción para condominios y PyMEs del Gran Concepción. Operadores certificados OS10 y CCTV." />
+  <title>Kraibe — Seguridad Electrónica y Conserjería Remota 24/7</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ───────────────────────────────────── */
+    :root {
+      --teal:        #33AEB3;
+      --teal-deep:   #1A6F73;
+      --teal-light:  #EAF7F8;
+      --navy:        #0D364A;
+      --navy-mid:    #1F4D63;
+      --navy-light:  #476A7D;
+      --lime:        #CFEE9E;
+      --cream:       #FAF8F6;
+      --neutral-100: #F2EEEB;
+      --neutral-200: #E4DFDC;
+      --neutral-400: #A8A19B;
+      --neutral-600: #5B544F;
+      --white:       #FFFFFF;
+      --success:     #1F7A53;
+      --shadow-sm:   0 1px 3px rgba(13,54,74,0.08);
+      --shadow-md:   0 4px 12px rgba(13,54,74,0.10);
+      --shadow-lg:   0 12px 32px rgba(13,54,74,0.14);
+    }
+
+    /* ── RESET ────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Manrope', system-ui, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ───────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,248,246,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em;
+    }
+    .nav-logo-mark {
+      width: 32px; height: 32px; background: var(--navy); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--navy-light); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy); color: var(--white) !important;
+      padding: 8px 18px; border-radius: 8px; font-weight: 600;
+      font-size: 0.875rem; transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(51,174,179,0.12) 0%, transparent 70%);
+    }
+    .hero-inner {
+      position: relative; max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 20px;
+    }
+    .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      color: var(--white); line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--teal); }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 480px; margin-bottom: 36px; }
+    .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--navy);
+      padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.15s, transform 0.1s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: #3BC4C9; transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);
+      padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.04); padding: 24px 20px;
+      text-align: center;
+    }
+    .hero-stat-value { font-size: 1.8rem; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1; }
+    .hero-stat-value span { color: var(--teal); }
+    .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 6px; font-weight: 500; }
+
+    /* ── SERVICIOS ────────────────────────────────── */
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal-deep); margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px; }
+    .section-desc { font-size: 1rem; color: var(--navy-light); max-width: 560px; }
+    .section-header { margin-bottom: 56px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--neutral-200);
+      border-radius: 14px; padding: 28px; transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .service-card:hover { box-shadow: var(--shadow-md); border-color: var(--teal); }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .service-icon svg { width: 22px; height: 22px; stroke: var(--teal-deep); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .service-card p { font-size: 0.875rem; color: var(--navy-light); line-height: 1.6; }
+
+    /* ── CONSERJERÍA ──────────────────────────────── */
+    .conserjeria { background: var(--navy); }
+    .conserjeria .section-label { color: var(--teal); }
+    .conserjeria .section-title { color: var(--white); }
+    .conserjeria .section-desc { color: rgba(255,255,255,0.55); }
+    .conj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .conj-item {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 20px;
+    }
+    .conj-item-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .conj-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .conj-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+    .conj-item p { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+    .conj-cta-wrap { margin-top: 40px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-lime {
+      background: var(--lime); color: var(--navy);
+      padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+      transition: opacity 0.15s;
+    }
+    .btn-lime:hover { opacity: 0.9; }
+    .conj-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ── CALCULADORA CTA ──────────────────────────── */
+    .calc-cta {
+      background: var(--teal-light); border: 1px solid rgba(51,174,179,0.2);
+      border-radius: 20px; padding: 52px 56px;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+    }
+    .calc-cta-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 10px; }
+    .calc-cta h2 { font-size: 1.7rem; font-weight: 800; color: var(--navy); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 10px; }
+    .calc-cta p { font-size: 0.9rem; color: var(--navy-light); }
+    .btn-navy { background: var(--navy); color: var(--white); padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; }
+    .btn-navy:hover { background: var(--navy-mid); }
+
+    /* ── POR QUÉ ──────────────────────────────────── */
+    .porque-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .porque-card { padding: 28px 24px; }
+    .porque-num { font-size: 2.5rem; font-weight: 800; color: var(--teal); letter-spacing: -0.04em; line-height: 1; margin-bottom: 14px; font-variant-numeric: tabular-nums; }
+    .porque-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .porque-card p { font-size: 0.85rem; color: var(--navy-light); line-height: 1.6; }
+    .porque-divider { border: none; border-top: 1px solid var(--neutral-200); }
+
+    /* ── CLIENTES ─────────────────────────────────── */
+    .clientes-bg { background: var(--neutral-100); }
+    .clientes-list { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cliente-pill {
+      background: var(--white); border: 1px solid var(--neutral-200);
+      border-radius: 100px; padding: 8px 18px;
+      font-size: 0.85rem; font-weight: 600; color: var(--navy);
+    }
+    .cobertura-note { margin-top: 32px; font-size: 0.875rem; color: var(--navy-light); display: flex; align-items: center; gap: 8px; }
+    .cobertura-icon { width: 16px; height: 16px; stroke: var(--teal-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* ── OS10 BADGE ───────────────────────────────── */
+    .trust-bar {
+      background: var(--white); border-top: 1px solid var(--neutral-200); border-bottom: 1px solid var(--neutral-200);
+      padding: 20px 0;
+    }
+    .trust-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; color: var(--navy-light); }
+    .trust-icon { width: 20px; height: 20px; stroke: var(--teal-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* ── CONTACTO ─────────────────────────────────── */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contacto-info h2 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .contacto-info p { font-size: 0.9rem; color: var(--navy-light); line-height: 1.7; margin-bottom: 28px; }
+    .contacto-details { display: flex; flex-direction: column; gap: 14px; }
+    .contacto-row { display: flex; align-items: flex-start; gap: 12px; }
+    .contacto-row-icon { width: 18px; height: 18px; stroke: var(--teal-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+    .contacto-row div { font-size: 0.875rem; }
+    .contacto-row strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .contacto-row span { color: var(--navy-light); }
+    .form-card { background: var(--white); border: 1px solid var(--neutral-200); border-radius: 16px; padding: 32px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--neutral-200);
+      border-radius: 8px; font-family: 'Manrope', sans-serif; font-size: 0.9rem;
+      color: var(--navy); background: var(--cream); outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit {
+      width: 100%; padding: 12px; background: var(--navy); color: var(--white);
+      border: none; border-radius: 8px; font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.15s;
+    }
+    .form-submit:hover { background: var(--navy-mid); }
+    .form-submit:active { transform: scale(0.99); }
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 12px; padding: 11px; border-radius: 8px;
+      border: 1px solid var(--neutral-200); font-size: 0.875rem; font-weight: 600;
+      color: var(--navy); transition: border-color 0.15s, background 0.15s;
+    }
+    .wa-btn:hover { border-color: var(--teal); background: var(--teal-light); }
+    .wa-btn svg { width: 18px; height: 18px; fill: #25D366; flex-shrink: 0; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer { background: var(--navy); padding: 56px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand h3 { font-size: 1.1rem; font-weight: 800; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-os10 { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--teal); }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-stats { grid-template-columns: repeat(4,1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .conj-grid { grid-template-columns: 1fr; }
+      .calc-cta { grid-template-columns: 1fr; padding: 36px 28px; }
+      .porque-grid { grid-template-columns: 1fr 1fr; }
+      .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 60px 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 0; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .porque-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .trust-inner { gap: 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    /* ── ANCLAS: compensar nav sticky ─────────────── */
+    section[id] { scroll-margin-top: 64px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* ── LOGOS ORIGINALES ─────────────────────────── */
+    .nav-logo img { height: 42px; width: auto; }
+    .footer-logo { height: 52px; width: auto; margin-bottom: 14px; }
+
+    /* ── HERO 3 TARJETAS ──────────────────────────── */
+    .hero:has(.hero-cards) { padding: 56px 0 72px; }
+    .hero-inner.hero-cards { display: block; }
+    .hero-cards .hero-desc { margin-bottom: 28px; max-width: 560px; }
+    .hero-copy { max-width: 720px; }
+    .areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .area-card {
+      position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px; padding: 30px 24px 26px; overflow: hidden;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .area-card::before {
+      content: ''; position: absolute; top: 0; left: 24px; right: 24px; height: 3px;
+      background: var(--teal); border-radius: 0 0 3px 3px; opacity: .8;
+    }
+    .area-card:hover, .area-card:focus-visible {
+      transform: translateY(-4px); border-color: var(--teal); background: rgba(51,174,179,0.08); outline: none;
+    }
+    .area-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+    .area-icon { width: 58px; height: 62px; margin: 18px 0 16px; background: url("data:image/png;base64,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") center / contain no-repeat; }
+    .area-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--white); line-height: 1.2; letter-spacing: -0.02em; }
+    .area-divider { width: 32px; height: 1px; background: rgba(255,255,255,0.25); margin: 16px 0; }
+    .area-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; flex: 1; }
+    .area-go { margin-top: 18px; font-size: 0.8rem; font-weight: 700; color: var(--teal); display: inline-flex; align-items: center; gap: 6px; }
+    .area-go svg { width: 14px; height: 14px; transition: transform .2s ease; }
+    .area-card:hover .area-go svg { transform: translateY(3px); }
+
+    /* ── CONSERJERÍA 9 ÍTEMS ─────────────────────── */
+    .conj-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* ── SOFTWARE ─────────────────────────────────── */
+    .soft-cta { margin-top: 40px; }
+
+    @media (max-width: 900px) {
+      .areas { grid-template-columns: 1fr; max-width: 420px; }
+      .conj-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .conj-grid { grid-template-columns: 1fr; }
+      .areas { margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Kraibe inicio">
+      <img src="data:image/png;base64,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" alt="Kraibe" width="104" height="40" />
+    </a>
+    <div class="nav-links">
+      <a href="#conserjeria">Conserjería</a>
+      <a href="#servicios">Seguridad</a>
+      <a href="#soluciones">Software</a>
+      <a href="#por-que">Por qué nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://app.kraibe.cl" class="nav-cta" target="_blank" rel="noopener">Acceso clientes</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-inner hero-cards">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        SOC activo — Concepción, Chile
+      </div>
+      <h1>Seguridad electrónica y conserjería remota <em>24/7</em></h1>
+      <p class="hero-desc">CCTV, alarmas, control de acceso y conserjería remota operados desde nuestro SOC en Concepción. Monitoreo 24/7 para condominios y PyMEs del Gran Concepción.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Agendar demostración de 30 min
+        </a>
+      </div>
+    </div>
+    <div class="areas">
+      <a class="area-card" href="#conserjeria">
+        <span class="area-tag">SE Kraibe</span>
+        <span class="area-icon" aria-hidden="true"></span>
+        <h3>Conserjería<br>Remota</h3>
+        <div class="area-divider"></div>
+        <p>24/7 · Monitoreo, control de acceso y atención de residentes desde nuestra central.</p>
+        <span class="area-go">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="area-card" href="#servicios">
+        <span class="area-tag">SE Kraibe</span>
+        <span class="area-icon" aria-hidden="true"></span>
+        <h3>Seguridad Electrónica<br>e Industrial</h3>
+        <div class="area-divider"></div>
+        <p>24/7 · CCTV con IA, monitoreo y protección de activos.</p>
+        <span class="area-go">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="area-card" href="#soluciones">
+        <span class="area-tag">Kraibe Solutions</span>
+        <span class="area-icon" aria-hidden="true"></span>
+        <h3>Desarrollo<br>de Software</h3>
+        <div class="area-divider"></div>
+        <p>Soluciones a medida · ERP / CRM Kraibe OS, dashboards y apps de gestión.</p>
+        <span class="area-go">Ver servicio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Operadores OS10 y CCTV
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Grabaciones en servidor local y nube
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Plataforma Kraibe OS
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Central SOC propia
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Gran Concepción
+    </div>
+  </div>
+</div>
+
+<!-- ── CONSERJERÍA ───────────────────────────────────── -->
+<section class="conserjeria" id="conserjeria">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Conserjería Remota</p>
+      <h2 class="section-title" style="color:var(--white)">Reemplaza o complementa la conserjería física.</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.5)">Operadores certificados OS10 y CCTV en nuestra central SOC en Concepción. Sin ausentismo, sin turnos no cubiertos, sin días de descanso.</p>
+    </div>
+    <div class="conj-grid">
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Monitoreo 24/7 sin interrupciones</h4></div>
+        <p>Sin ausentismo, sin reemplazos de turno, sin días festivos no cubiertos. Continuidad operacional garantizada.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Central SOC propia en Concepción</h4></div>
+        <p>No subcontratamos. Nuestros operadores cuentan con certificación OS10 y CCTV, en instalaciones propias.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Videoportería IP</h4></div>
+        <p>Atención de visitas, citofonía, correspondencia y proveedores con comunicación bidireccional en tiempo real desde el SOC.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Control de acceso</h4></div>
+        <p>Biometría, tarjetas RFID, PIN y TAG vehicular, con trazabilidad completa de entradas y salidas.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Reportes y evidencia</h4></div>
+        <p>Bitácora automática de cada evento con respaldo en video. Sin registros manuales, disponible para auditoría y uso legal.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Soporte y mantención</h4></div>
+        <p>Equipos instalados por Kraibe, con mantención preventiva y correctiva, reparación y reemplazo durante la vigencia del contrato.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Kraibe OS</h4></div>
+        <p>Novedades digitalizadas en tiempo real, con reportabilidad para el comité y la administración.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Apps con perfiles diferenciados</h4></div>
+        <p>App para residentes y app para comité y administración, cada una con su propio perfil y nivel de acceso.</p>
+      </div>
+      <div class="conj-item">
+        <div class="conj-item-head"><div class="conj-dot"></div><h4>Licencias de IA y software</h4></div>
+        <p>Analítica de video con inteligencia artificial y administración de software, gestionadas por Kraibe.</p>
+      </div>
+    </div>
+    <div class="conj-cta-wrap">
+      <a href="calculadora.html" class="btn-lime">Calcular mi ahorro →</a>
+      <span class="conj-note">Período mínimo 12 meses · Salida anticipada desde mes 6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CALCULADORA CTA ───────────────────────────────── -->
+<section style="padding:60px 0;">
+  <div class="container">
+    <div class="calc-cta">
+      <div>
+        <p class="calc-cta-eyebrow">Calculadora de ahorro</p>
+        <h2>¿Cuánto ahorra tu comunidad con conserjería remota?</h2>
+        <p>Compara el costo de conserjes físicos vs. SE Kraibe. UF actualizada en tiempo real. Resultado instantáneo.</p>
+      </div>
+      <a href="calculadora.html" class="btn-navy">
+        Abrir calculadora
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ────────────────────────────────────── -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Servicios</p>
+      <h2 class="section-title">Instalación, operación y mantención.</h2>
+      <p class="section-desc">Para condominios, PyMEs y empresas de la zona. Instalación, operación y mantención con SOC propio en Concepción — no dependemos de terceros.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M20.94 13a9 9 0 1 1 0-2"/><path d="M22 12l-2 2-2-2"/></svg>
+        </div>
+        <h3>CCTV e Inteligencia de Video</h3>
+        <p>Cámaras IP, analítica de video, lectura de patentes y respaldo en nube. Evidencia en video para uso legal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Control de Acceso</h3>
+        <p>Biometría, tarjetas RFID, PIN y TAG vehicular. Trazabilidad completa de entradas y salidas con reportes automáticos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 7.09 7.09l1.26-1.26a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Video Portería IP</h3>
+        <p>Gestión de visitas, control de acceso remoto y comunicación bidireccional en tiempo real desde nuestra central SOC.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Monitoreo de Alarmas</h3>
+        <p>Recepción y verificación de alertas de intrusión, humo y pánico. Protocolo de respuesta operado desde nuestro SOC.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Reportes y Evidencia</h3>
+        <p>Bitácoras digitales de rondas virtuales, informes periódicos a la administración y evidencia en video para uso legal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Soporte y Mantención</h3>
+        <p>Mantención preventiva y correctiva de equipos instalados. Acceso remoto al dashboard de operación desde nuestra plataforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOFTWARE ──────────────────────────────────────── -->
+<section id="soluciones">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Kraibe Solutions</p>
+      <h2 class="section-title">De la operación al software: lo probamos primero en nuestro propio SOC.</h2>
+      <p class="section-desc">Construimos las plataformas que operan nuestro SOC y diseñamos software a medida para empresas que necesitan la misma precisión operacional.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1.6"/><path d="M8 22h8M12 18v4"/></svg></div>
+        <h3>Plataformas ERP / CRM</h3>
+        <p>Kraibe OS y sistemas de gestión a medida para operación, clientes y contratos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 19V10M11 19V5M18 19v-6"/></svg></div>
+        <h3>Dashboards y BI</h3>
+        <p>Tableros operacionales en tiempo real, indicadores y reportería ejecutiva.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.4"/><path d="M10.5 18.5h3"/></svg></div>
+        <h3>Apps móviles y PWA</h3>
+        <p>Aplicaciones para operadores de campo, clientes y equipos de terreno.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 6.2l2.1 2.1M17.7 15.7l2.1 2.1M3 12h3M18 12h3M4.2 17.8l2.1-2.1M17.7 8.3l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>Automatización con IA</h3>
+        <p>Analítica de video, generación de reportes y flujos operativos automatizados.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="2.6"/><circle cx="17" cy="6" r="2.6"/><circle cx="17" cy="18" r="2.6"/><path d="M9.3 10.8 14.8 7.2M9.3 13.2l5.5 3.6"/></svg></div>
+        <h3>Integración de sistemas</h3>
+        <p>Conectamos cámaras, alarmas, control de acceso y software de gestión en una sola operación.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3v14H7Z"/><path d="M14 3.5V7h3M9 12h6M9 15h6"/></svg></div>
+        <h3>Reportería y cumplimiento</h3>
+        <p>Documentos, informes y evidencia alineados a exigencias de auditoría.</p>
+      </div>
+    </div>
+    <div class="soft-cta">
+      <a href="https://wa.me/56951715595?text=Hola%20Kraibe%2C%20quisiera%20conversar%20un%20proyecto%20de%20software" class="btn-navy" target="_blank" rel="noopener">Conversar un proyecto de software →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── POR QUÉ ───────────────────────────────────────── -->
+<section id="por-que" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Por qué Kraibe</p>
+      <h2 class="section-title">Operación profesional con métricas y evidencia.</h2>
+    </div>
+    <div class="porque-grid">
+      <div class="porque-card">
+        <div class="porque-num">99.9%</div>
+        <h3>Disponibilidad garantizada</h3>
+        <p>Infraestructura redundante y monitoreo de continuidad. Nuestro SOC no duerme.</p>
+      </div>
+      <hr class="porque-divider" style="display:none"/>
+      <div class="porque-card">
+        <div class="porque-num">&lt;60s</div>
+        <h3>Tiempo de respuesta</h3>
+        <p>Desde la detección de un evento hasta la primera acción documentada. Verificado en bitácora.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-num">Local + Nube</div>
+        <h3>Almacenamiento de grabaciones</h3>
+        <p>Servidores físicos y respaldo en nube para el almacenamiento de grabaciones.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-num">OS10</div>
+        <h3>Operadores certificados</h3>
+        <p>Nuestros operadores cuentan con certificación OS10 y CCTV.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-num">24/7</div>
+        <h3>Sin días no cubiertos</h3>
+        <p>Feriados, fines de semana, madrugadas. Cobertura continua sin depender de una sola persona.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-num">Kraibe OS</div>
+        <h3>Reportabilidad digital</h3>
+        <p>Novedades digitalizadas y apps con perfiles para residentes, comité y administración.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENTES ──────────────────────────────────────── -->
+<section class="clientes-bg" id="clientes">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:32px">
+      <p class="section-label">Clientes activos</p>
+      <h2 class="section-title">Confían en nuestra operación.</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div>
+        <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:10px;">Conserjería Remota</p>
+        <div class="clientes-list">
+          <span class="cliente-pill">Edificio Vía del Río</span>
+          <span class="cliente-pill">Administración Pastene y Rojo</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:10px;">Monitoreo SOC</p>
+        <div class="clientes-list">
+          <span class="cliente-pill">Rozto Equipamiento</span>
+        </div>
+      </div>
+    </div>
+    <p class="cobertura-note">
+      <svg class="cobertura-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cobertura de instalación y operación: Gran Concepción, Región del Biobío.
+    </p>
+  </div>
+</section>
+
+<!-- ── CONTACTO ──────────────────────────────────────── -->
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <h2>Agenda una demostración en vivo de 30 minutos.</h2>
+        <p>Respondemos el mismo día hábil. Si es urgente, escríbenos por WhatsApp directamente al +56 9 5171 5595.</p>
+        <div class="contacto-details">
+          <div class="contacto-row">
+            <svg class="contacto-row-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <strong>Dirección</strong>
+              <span>Cochrane 635, Of. 607A, Concepción</span>
+            </div>
+          </div>
+          <div class="contacto-row">
+            <svg class="contacto-row-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <strong>Email</strong>
+              <span>gkraemer@kraibe.cl</span>
+            </div>
+          </div>
+          <div class="contacto-row">
+            <svg class="contacto-row-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 7.09 7.09l1.26-1.26a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <strong>Teléfono</strong>
+              <span>+56 9 5171 5595</span>
+            </div>
+          </div>
+          <div class="contacto-row">
+            <svg class="contacto-row-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <strong>Atención comercial</strong>
+              <span>Lunes a Viernes, 9:00–18:00 · SOC 24/7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-card">
+          <form onsubmit="enviarFormulario(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa / Condominio</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nombre del lugar" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="servicio">Servicio de interés</label>
+              <select id="servicio" name="servicio">
+                <option value="">Seleccionar...</option>
+                <option>Conserjería remota 24/7</option>
+                <option>CCTV e inteligencia de video</option>
+                <option>Control de acceso</option>
+                <option>Monitoreo de alarmas</option>
+                <option>Solución completa</option>
+                <option>Desarrollo de software</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, cantidad de cámaras, accesos, etc."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Solicitar demostración</button>
+          </form>
+          <a href="https://wa.me/56951715595?text=Hola%20Kraibe%2C%20quisiera%20cotizar%20sus%20servicios" class="wa-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="data:image/png;base64,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" alt="SE Kraibe" width="135" height="52" />
+        <p>CCTV, alarmas, control de acceso y conserjería remota 24/7. SOC propio en Concepción para condominios y PyMEs del Gran Concepción.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">CCTV y analítica</a></li>
+          <li><a href="#servicios">Control de acceso</a></li>
+          <li><a href="#conserjeria">Conserjería remota</a></li>
+          <li><a href="#servicios">Monitoreo de alarmas</a></li>
+          <li><a href="#soluciones">Desarrollo de software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#por-que">Por qué Kraibe</a></li>
+          <li><a href="#clientes">Clientes</a></li>
+          <li><a href="calculadora.html">Calculadora de ahorro</a></li>
+          <li><a href="https://app.kraibe.cl" target="_blank" rel="noopener">Acceso clientes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SE Kraibe SpA · RUT 78.254.946-4 · Cochrane 635, Of. 607A, Concepción</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function enviarFormulario(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const empresa = document.getElementById('empresa').value;
+  const email = document.getElementById('email').value;
+  const servicio = document.getElementById('servicio').value;
+  const mensaje = document.getElementById('mensaje').value;
+  const txt = encodeURIComponent(
+    'Hola Kraibe, me contacto desde el sitio web.\n\n' +
+    'Nombre: ' + nombre + '\n' +
+    (empresa ? 'Empresa: ' + empresa + '\n' : '') +
+    'Email: ' + email + '\n' +
+    (servicio ? 'Servicio: ' + servicio + '\n' : '') +
+    (mensaje ? '\nMensaje: ' + mensaje : '')
+  );
+  window.open('https://wa.me/56951715595?text=' + txt, '_blank');
+}
+</script>
+<!-- Karim Vásquez — Asesor de Seguridad Kraibe -->
+<script>
+(function() {
+  const API = 'https://app.kraibe.cl/api/karim';
+  const WA  = '56951715595';
+  const s = document.createElement('style');
+  s.textContent = `
+    #kfab{position:fixed;bottom:28px;right:28px;width:60px;height:60px;border-radius:50%;background:#33AEB3;border:none;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(51,174,179,0.45);transition:transform .2s;}
+    #kfab:hover{transform:scale(1.08);}
+    #kfab.kp::before{content:'';position:absolute;width:100%;height:100%;border-radius:50%;background:#33AEB3;animation:kpulse 2.2s ease-out infinite;z-index:-1;}
+    @keyframes kpulse{0%{transform:scale(1);opacity:.6}70%{transform:scale(1.55);opacity:0}100%{transform:scale(1.55);opacity:0}}
+    #kwin{position:fixed;bottom:100px;right:28px;width:380px;max-width:calc(100vw - 40px);height:580px;max-height:calc(100vh - 120px);background:#0D364A;border:1px solid rgba(51,174,179,0.2);border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,0.45);z-index:9999;display:flex;flex-direction:column;overflow:hidden;font-family:'Inter','Segoe UI',system-ui,sans-serif;transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:transform .22s cubic-bezier(.3,1.4,.5,1),opacity .18s ease;}
+    #kwin.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all;}
+    .kh{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+    .kav{width:40px;height:40px;border-radius:50%;background:#33AEB3;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#FFFBFA;flex-shrink:0;}
+    .kb{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;}
+    .km{display:flex;gap:8px;max-width:88%;animation:kfd .2s ease;}
+    .km.b{align-self:flex-start;}.km.u{align-self:flex-end;flex-direction:row-reverse;}
+    @keyframes kfd{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .kma{width:28px;height:28px;border-radius:50%;background:#33AEB3;color:#FFFBFA;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .km.u .kma{background:rgba(255,255,255,.1);font-size:13px;}
+    .kbb{padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.55;color:#FFFBFA;}
+    .km.b .kbb{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-top-left-radius:4px;}
+    .km.u .kbb{background:#33AEB3;border-top-right-radius:4px;}
+    .kcs{display:flex;flex-wrap:wrap;gap:7px;padding-left:36px;}
+    .kc{background:transparent;border:1px solid rgba(51,174,179,.5);color:rgba(51,174,179,.9);font-size:12px;padding:5px 11px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .15s;}
+    .kc:hover{background:rgba(51,174,179,.15);color:#FFFBFA;}
+    .kty{display:flex;gap:4px;align-items:center;padding:10px 14px;}
+    .kty span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);animation:kb 1.1s ease infinite;}
+    .kty span:nth-child(2){animation-delay:.18s}.kty span:nth-child(3){animation-delay:.36s}
+    @keyframes kb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+    .kf{background:rgba(255,255,255,.06);border:1px solid rgba(51,174,179,.25);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;align-self:flex-start;max-width:88%;}
+    .kf p{margin:0;font-size:13px;color:rgba(255,255,255,.7);}
+    .kf p strong{color:#FFFBFA;}
+    .kfi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#FFFBFA;font-size:13px;padding:8px 11px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
+    .kfi:focus{border-color:#33AEB3;}
+    .kfi option{background:#0D364A;}
+    .kfsb{background:#33AEB3;color:#0D364A;border:none;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+    .kft{border-top:1px solid rgba(255,255,255,.08);padding:10px 12px;display:flex;gap:8px;align-items:flex-end;flex-shrink:0;background:rgba(255,255,255,.03);}
+    #ki{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#FFFBFA;font-size:13.5px;padding:9px 13px;font-family:inherit;outline:none;resize:none;max-height:100px;line-height:1.45;overflow-y:auto;}
+    #ksb{width:38px;height:38px;border-radius:10px;background:#33AEB3;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    #ksb:disabled{background:rgba(51,174,179,.3);cursor:not-allowed;}
+    .kbr{text-align:center;font-size:10px;color:rgba(255,255,255,.2);padding:5px 0 8px;letter-spacing:.05em;flex-shrink:0;}
+    @media(max-width:480px){#kwin{bottom:0;right:0;left:0;width:100%;max-width:100%;height:92vh;border-radius:14px 14px 0 0;}}
+  `;
+  document.head.appendChild(s);
+
+  document.body.insertAdjacentHTML('beforeend', `
+    <button id="kfab" class="kp" aria-label="Consultar con Karim">
+      <span style="font-size:24px;line-height:1">&#128110;</span>
+    </button>
+    <div id="kwin" role="dialog">
+      <div class="kh">
+        <div class="kav" style="font-size:22px;background:rgba(255,255,255,0.08)">&#128110;</div>
+        <div style="flex:1">
+          <p style="margin:0;font-size:14px;font-weight:600;color:#FFFBFA">Karim Vasquez</p>
+          <p style="margin:0;font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#2ecc71;display:inline-block"></span>
+            Asesor de Seguridad · Kraibe
+          </p>
+        </div>
+        <button onclick="KW.close()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);padding:4px">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="kb" id="kbody"></div>
+      <div class="kft">
+        <textarea id="ki" placeholder="Escribe tu consulta..." rows="1" onkeydown="KW.key(event)" oninput="KW.resize(this)"></textarea>
+        <button id="ksb" onclick="KW.send()" aria-label="Enviar">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="kbr">Kraibe · Seguridad Electronica 24/7</div>
+    </div>
+  `);
+
+  const CHIPS = ['Cuanto cuesta la conserjeria remota?','Como funciona el monitoreo 24/7?','Quiero cotizar para mi condominio','Reemplaza a un conserje fisico?','Que pasa ante una emergencia?'];
+  let hist=[],leadOk=false,formOk=false,init=false;
+  const body=()=>document.getElementById('kbody');
+  const scroll=()=>{const b=body();b.scrollTop=b.scrollHeight;};
+
+  function addMsg(r,t){
+    const w=document.createElement('div');w.className='km '+(r==='user'?'u':'b');
+    w.innerHTML=`<div class="kma">${r==='user'?'&#128100;':'&#128110;'}</div><div class="kbb">${t.replace(/\n/g,'<br>')}</div>`;
+    body().appendChild(w);scroll();
+  }
+  function typing(show){
+    document.getElementById('ktd')?.remove();
+    if(!show)return;
+    const w=document.createElement('div');w.className='km b';w.id='ktd';
+    w.innerHTML='<div class="kma">KV</div><div class="kbb kty"><span></span><span></span><span></span></div>';
+    body().appendChild(w);scroll();
+  }
+  function showChips(){
+    const r=document.createElement('div');r.className='kcs';r.id='kch';
+    CHIPS.forEach(c=>{const b=document.createElement('button');b.className='kc';b.textContent=c;b.onclick=()=>{document.getElementById('kch')?.remove();doSend(c);};r.appendChild(b);});
+    body().appendChild(r);scroll();
+  }
+  function showForm(){
+    if(formOk)return;formOk=true;
+    const f=document.createElement('div');f.className='kf';f.id='kform';
+    f.innerHTML=`<p><strong>Para preparar tu cotizacion</strong>, necesito algunos datos:</p>
+      <input class="kfi" type="text" id="kfn" placeholder="Nombre y apellido">
+      <input class="kfi" type="text" id="kfe" placeholder="Condominio / Empresa">
+      <input class="kfi" type="tel" id="kfp" placeholder="Telefono (+56 9 XXXX XXXX)">
+      <input class="kfi" type="email" id="kfem" placeholder="Email de contacto">
+      <select class="kfi" id="kfs"><option value="">Servicio de interes...</option><option>Conserjeria remota 24/7</option><option>CCTV e inteligencia de video</option><option>Control de acceso</option><option>Monitoreo de alarmas</option><option>Solucion completa</option></select>
+      <button class="kfsb" onclick="KW.submit()">Enviar - Gabriel me contacta</button>`;
+    body().appendChild(f);scroll();
+  }
+
+  async function doSend(text){
+    const t=text||document.getElementById('ki').value.trim();
+    if(!t)return;
+    document.getElementById('ki').value='';
+    document.getElementById('ki').style.height='auto';
+    document.getElementById('ksb').disabled=true;
+    document.getElementById('kch')?.remove();
+    addMsg('user',t);
+    hist.push({role:'user',content:t});
+    typing(true);
+    try{
+      const res=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist,channel:'web_publica'})});
+      const data=await res.json();
+      let reply=data.reply||'Disculpa, no pude procesar tu consulta. Escribenos al +56 9 5171 5595.';
+      const wf=reply.includes('MOSTRAR_FORMULARIO');
+      reply=reply.replace(/MOSTRAR_FORMULARIO/g,'').trim();
+      typing(false);
+      hist.push({role:'assistant',content:reply});
+      addMsg('bot',reply);
+      if(wf&&!leadOk)setTimeout(showForm,300);
+    }catch(e){
+      typing(false);
+      addMsg('bot','En este momento no puedo procesar tu consulta. Escribenos por WhatsApp o al +56 9 5171 5595.');
+    }
+    document.getElementById('ksb').disabled=false;
+  }
+
+  window.KW={
+    open(){
+      document.getElementById('kwin').classList.add('open');
+      document.getElementById('kfab').style.display='none';
+      if(!init){init=true;addMsg('bot','Hola, soy Karim Vasquez, asesor de seguridad de Kraibe.\n\nEn que puedo ayudarte hoy?');setTimeout(showChips,200);}
+      setTimeout(()=>document.getElementById('ki').focus(),250);
+    },
+    close(){document.getElementById('kwin').classList.remove('open');document.getElementById('kfab').style.display='flex';},
+    key(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doSend();}},
+    resize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';},
+    send(){doSend();},
+    submit(){
+      const n=document.getElementById('kfn').value.trim();
+      const e=document.getElementById('kfe').value.trim();
+      const p=document.getElementById('kfp').value.trim();
+      const em=document.getElementById('kfem').value.trim();
+      const sv=document.getElementById('kfs').value;
+      if(!n||!p){alert('Ingresa nombre y telefono.');return;}
+      document.getElementById('kform')?.remove();
+      leadOk=true;
+      const txt=encodeURIComponent('Hola Gabriel, llegue desde kraibe.cl.\n\nNombre: '+n+'\nCondominio/Empresa: '+(e||'-')+'\nTelefono: '+p+'\nEmail: '+(em||'-')+'\nServicio: '+(sv||'No especificado'));
+      window.open('https://wa.me/'+WA+'?text='+txt,'_blank');
+      addMsg('bot','Listo, '+n.split(' ')[0]+'. Se abrio WhatsApp con tus datos para que Gabriel te contacte.\n\nTienes alguna otra consulta?');
+    },
+  };
+  document.getElementById('kfab').addEventListener('click',()=>KW.open());
+})();
+</script>
+<!-- Fin Karim Widget -->
+</body>
+</html>
+
+
+
