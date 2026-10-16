@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Ahorro — SE Kraibe</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Trebuchet MS', system-ui, sans-serif; background: #f8fafc; color: #0f172a; padding: 0; }
+    .kc { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+
+    .kc-hero { background: #0D364A; border-radius: 14px; padding: 2rem 2rem 1.5rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    .kc-hero::after { content: ''; position: absolute; right: -40px; top: -40px; width: 180px; height: 180px; border-radius: 50%; background: #33AEB3; opacity: 0.08; }
+    .kc-hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #33AEB3; margin-bottom: 8px; }
+    .kc-hero h1 { font-size: 1.7rem; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 6px; }
+    .kc-hero p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 480px; }
+    .kc-uf-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(51,174,179,0.15); border: 1px solid rgba(51,174,179,0.4); border-radius: 20px; padding: 4px 12px; margin-top: 14px; font-size: 12px; color: #33AEB3; }
+    .kc-uf-dot { width: 6px; height: 6px; border-radius: 50%; background: #33AEB3; flex-shrink: 0; }
+    .kc-uf-dot.loading { background: #888; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .kc-beneficios { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-bottom: 1.25rem; }
+    .kc-bitem { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; }
+    .kc-bitem-title { font-size: 12px; font-weight: 700; color: #0D364A; margin-bottom: 2px; }
+    .kc-bitem-desc { font-size: 11px; color: #64748b; line-height: 1.4; }
+
+    .kc-section { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; }
+    .kc-section-title { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+
+    .kc-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 560px) { .kc-grid2 { grid-template-columns: 1fr; } }
+
+    .kc-field label { display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 10px; }
+    .kc-field input[type=number] { width: 100%; padding: 9px 12px; font-size: 1.1rem; font-weight: 700; text-align: center; border: 1.5px solid #e2e8f0; border-radius: 8px; color: #0D364A; outline: none; background: #fff; }
+    .kc-field input[type=number]:focus { border-color: #33AEB3; }
+    .kc-field input[type=range] { width: 100%; height: 4px; margin-bottom: 10px; -webkit-appearance: none; background: #e2e8f0; border-radius: 2px; outline: none; cursor: pointer; }
+    .kc-field input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #33AEB3; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); cursor: pointer; }
+    .kc-hint { font-size: 11px; color: #94a3b8; margin-top: 5px; }
+
+    .kc-sueldo-wrap { display: flex; border: 1.5px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+    .kc-sueldo-wrap:focus-within { border-color: #33AEB3; }
+    .kc-prefix { padding: 9px 10px; font-size: 13px; color: #94a3b8; background: #f8fafc; border-right: 1px solid #e2e8f0; font-weight: 700; }
+    .kc-sueldo-wrap input { flex: 1; padding: 9px 10px; font-size: 14px; font-weight: 700; border: none; color: #0D364A; outline: none; background: #fff; width: 100%; }
+
+    .kc-turno { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .kc-tbtn { padding: 9px 4px; font-size: 12px; font-weight: 700; border: 1.5px solid #e2e8f0; border-radius: 8px; background: #fff; color: #64748b; cursor: pointer; text-align: center; transition: all 0.15s; }
+    .kc-tbtn:hover { border-color: #33AEB3; color: #33AEB3; }
+    .kc-tbtn.on { background: #0D364A; border-color: #0D364A; color: #33AEB3; }
+
+    .kc-results { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+    @media (max-width: 560px) { .kc-results { grid-template-columns: 1fr; } }
+    .kc-rcard { border-radius: 12px; padding: 1rem; border: 1px solid #e2e8f0; background: #f8fafc; }
+    .kc-rcard-label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+    .kc-rcard-main { font-size: 1.35rem; font-weight: 800; color: #0f172a; line-height: 1.1; margin-bottom: 2px; }
+    .kc-rcard-sub { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .kc-rcard-annual { font-size: 11px; color: #94a3b8; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0; }
+    .kc-rcard.win { background: #ecfdf5; border-color: #a7f3d0; }
+    .kc-rcard.win .kc-rcard-main { color: #059669; }
+    .kc-rcard.highlight { background: #0D364A; border-color: #0D364A; }
+    .kc-rcard.highlight .kc-rcard-label { color: #33AEB3; }
+    .kc-rcard.highlight .kc-rcard-main { color: #fff; font-size: 1.5rem; }
+    .kc-rcard.highlight .kc-rcard-sub { color: rgba(255,255,255,0.55); }
+    .kc-rcard.highlight .kc-rcard-annual { color: #33AEB3; border-color: rgba(51,174,179,0.3); }
+
+    .kc-desglose { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 560px) { .kc-desglose { grid-template-columns: 1fr; } }
+    .kc-drow { display: flex; justify-content: space-between; font-size: 13px; color: #64748b; padding: 5px 0; border-bottom: 1px solid #f1f5f9; }
+    .kc-drow:last-child { border: none; font-weight: 700; color: #0D364A; }
+    .kc-drow span:last-child { font-weight: 600; color: #334155; }
+    .kc-drow:last-child span:last-child { color: #33AEB3; }
+
+    .kc-condiciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-bottom: 1rem; }
+    .kc-cond-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-size: 12px; }
+    .kc-cond-item strong { display: block; color: #0D364A; font-size: 11px; margin-bottom: 2px; }
+    .kc-cond-item span { color: #64748b; }
+
+    .kc-cta { background: #0D364A; border-radius: 14px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .kc-cta h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .kc-cta p { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .kc-cta-btn { background: #33AEB3; color: #0D364A; font-size: 13px; font-weight: 700; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: opacity 0.15s; text-decoration: none; display: inline-block; }
+    .kc-cta-btn:hover { opacity: 0.9; }
+
+    .kc-disclaimer { font-size: 11px; color: #94a3b8; line-height: 1.6; padding: 12px 14px; background: #f8fafc; border-radius: 8px; border-left: 3px solid #e2e8f0; }
+  </style>
+</head>
+<body>
+<div class="kc">
+
+  <div class="kc-hero">
+    <p class="kc-hero-eyebrow">SE Kraibe — Conserjería Remota</p>
+    <h1>¿Cuánto ahorra tu comunidad?</h1>
+    <p>Compara el costo real de conserjes físicos versus monitoreo remoto 24/7 desde nuestra central SOC en Concepción.</p>
+    <div class="kc-uf-pill">
+      <span class="kc-uf-dot loading" id="uf-dot"></span>
+      <span id="uf-label">Cargando UF...</span>
+    </div>
+  </div>
+
+  <div class="kc-beneficios">
+    <div class="kc-bitem"><div class="kc-bitem-title">Monitoreo 24/7</div><div class="kc-bitem-desc">Sin ausentismo ni turnos no cubiertos</div></div>
+    <div class="kc-bitem"><div class="kc-bitem-title">Central SOC propia</div><div class="kc-bitem-desc">Operadores certificados en Concepción</div></div>
+    <div class="kc-bitem"><div class="kc-bitem-title">Evidencia digital</div><div class="kc-bitem-desc">Bitácora con video de cada evento</div></div>
+    <div class="kc-bitem"><div class="kc-bitem-title">Certificación OS10</div><div class="kc-bitem-desc">Enlace directo con Carabineros</div></div>
+    <div class="kc-bitem"><div class="kc-bitem-title">Garantía incluida</div><div class="kc-bitem-desc">Equipos Kraibe cubiertos durante el contrato</div></div>
+    <div class="kc-bitem"><div class="kc-bitem-title">Gestión completa</div><div class="kc-bitem-desc">Acceso, citófonos, emergencias y proveedores</div></div>
+  </div>
+
+  <div class="kc-section">
+    <p class="kc-section-title">Configura tu comunidad</p>
+    <div class="kc-grid2">
+      <div class="kc-field">
+        <label>Cantidad de departamentos</label>
+        <input type="range" id="sl-dpts" min="1" max="150" value="30" step="1" oninput="syncDpts(this.value)">
+        <input type="number" id="in-dpts" value="30" min="1" max="150" oninput="syncDptsN(this.value)">
+        <p class="kc-hint" id="hint-rango">Rango tarifario: 21–30 dpts</p>
+      </div>
+      <div class="kc-field">
+        <label>Turno de monitoreo</label>
+        <div class="kc-turno">
+          <button class="kc-tbtn" onclick="setTurno('diurno',this)">Diurno</button>
+          <button class="kc-tbtn" onclick="setTurno('nocturno',this)">Nocturno</button>
+          <button class="kc-tbtn on" onclick="setTurno('247',this)">24/7</button>
+        </div>
+        <p class="kc-hint" id="hint-turno">00:00–24:00 horas (monitoreo continuo)</p>
+      </div>
+      <div class="kc-field">
+        <label>Conserjes en plantilla actual</label>
+        <input type="range" id="sl-cons" min="1" max="20" value="4" step="1" oninput="syncCons(this.value)">
+        <input type="number" id="in-cons" value="4" min="1" max="20" oninput="syncConsN(this.value)">
+        <p class="kc-hint">Incluye todos los turnos</p>
+      </div>
+      <div class="kc-field">
+        <label>Sueldo mensual por conserje (CLP)</label>
+        <div class="kc-sueldo-wrap">
+          <span class="kc-prefix">$</span>
+          <input type="number" id="in-sueldo" value="900000" step="50000" oninput="calc()">
+        </div>
+        <p class="kc-hint">Incluye colaciones y bonificaciones legales</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kc-results">
+    <div class="kc-rcard win">
+      <div class="kc-rcard-label">SE Kraibe / mes</div>
+      <div class="kc-rcard-main" id="r-kraibe-mes">$0</div>
+      <div class="kc-rcard-sub" id="r-kraibe-uf">0 UF</div>
+      <div class="kc-rcard-annual" id="r-kraibe-anual">Anual: $0</div>
+    </div>
+    <div class="kc-rcard">
+      <div class="kc-rcard-label">Conserjes / mes</div>
+      <div class="kc-rcard-main" id="r-actual-mes">$0</div>
+      <div class="kc-rcard-sub" id="r-actual-sub">4 × $900.000</div>
+      <div class="kc-rcard-annual" id="r-actual-anual">Anual: $0</div>
+    </div>
+    <div class="kc-rcard highlight">
+      <div class="kc-rcard-label">Ahorro mensual</div>
+      <div class="kc-rcard-main" id="r-ahorro-mes">$0</div>
+      <div class="kc-rcard-sub" id="r-ahorro-pct">0% menos</div>
+      <div class="kc-rcard-annual" id="r-ahorro-anual">Anual: $0</div>
+    </div>
+  </div>
+
+  <div class="kc-section">
+    <p class="kc-section-title">Desglose del cálculo</p>
+    <div class="kc-desglose">
+      <div>
+        <p style="font-size:12px;font-weight:700;color:#0D364A;margin-bottom:10px;">SE Kraibe</p>
+        <div class="kc-drow"><span>Tarifa</span><span id="d-uf">0 UF</span></div>
+        <div class="kc-drow"><span>En CLP</span><span id="d-clp">$0</span></div>
+        <div class="kc-drow"><span>Total mensual</span><span id="d-total">$0</span></div>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;color:#0D364A;margin-bottom:10px;">Conserjes físicos</p>
+        <div class="kc-drow"><span id="d-cons-label">4 × $900.000</span><span id="d-cons-base">$0</span></div>
+        <div class="kc-drow"><span>Finiquito estimado (30%/año)</span><span id="d-finiquito">$0</span></div>
+        <div class="kc-drow"><span>Costo mensual promedio</span><span id="d-cons-total">$0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kc-condiciones">
+    <div class="kc-cond-item"><strong>Período mínimo</strong><span>1 año (12 meses)</span></div>
+    <div class="kc-cond-item"><strong>Salida anticipada</strong><span>A partir del mes 6, con 30 días de aviso</span></div>
+    <div class="kc-cond-item"><strong>Garantía de equipos</strong><span>Equipos Kraibe cubiertos durante el contrato</span></div>
+    <div class="kc-cond-item"><strong>Mantenimiento</strong><span>Según cantidad de cámaras instaladas</span></div>
+  </div>
+
+  <div class="kc-cta">
+    <div>
+      <h3>¿Quieres una cotización para tu comunidad?</h3>
+      <p>Nuestro equipo te responde el mismo día.</p>
+    </div>
+    <a id="wa-btn" class="kc-cta-btn" href="#" target="_blank" onclick="actualizarWA()">
+      Solicitar cotización por WhatsApp
+    </a>
+  </div>
+
+  <p class="kc-disclaimer">
+    Este cálculo incluye únicamente el servicio de conserjería remota. No incluye inversión en tecnología del condominio (cámaras, control de acceso, citófonos IP) ni mantenimiento preventivo. Precios en UF, sin IVA (19%). Período mínimo: 12 meses.
+  </p>
+
+</div>
+<script>
+const T = {
+  diurno:   {'1-10':12.1,'11-20':18.975,'21-30':22.77,'31-50':25.3,'51-70':29.095,'71-100':32.89,'101-150':37.95},
+  nocturno: {'1-10':14.3,'11-20':22.77,'21-30':26.565,'31-50':30.36,'51-70':34.155,'71-100':39.115,'101-150':46.3875},
+  '247':    {'1-10':25.85,'11-20':40.48,'21-30':48.07,'31-50':54.395,'51-70':61.3775,'71-100':69.575,'101-150':83.3835}
+};
+const TURNO_TEXTO = { diurno:'08:00–20:00 horas', nocturno:'20:00–08:00 horas', '247':'00:00–24:00 horas (monitoreo continuo)' };
+let turno = '247';
+let UF = 38500;
+
+function getRango(d) {
+  if(d<=10) return '1-10'; if(d<=20) return '11-20'; if(d<=30) return '21-30';
+  if(d<=50) return '31-50'; if(d<=70) return '51-70'; if(d<=100) return '71-100';
+  return '101-150';
+}
+function clp(v) { return '$'+Math.round(v).toLocaleString('es-CL'); }
+
+function calc() {
+  const dpts = parseInt(document.getElementById('in-dpts').value)||1;
+  const cons = parseInt(document.getElementById('in-cons').value)||1;
+  const sueldo = parseInt(document.getElementById('in-sueldo').value)||900000;
+  const rango = getRango(dpts);
+  const ufVal = T[turno][rango];
+  const kraibeMes = ufVal * UF;
+  const kraibeAnual = kraibeMes * 12;
+  const consMes = sueldo * cons;
+  const finqAnual = consMes * 12 * 0.30;
+  const consAnual = consMes * 12 + finqAnual;
+  const consPromMes = consAnual / 12;
+  const ahorroMes = consPromMes - kraibeMes;
+  const ahorroAnual = consAnual - kraibeAnual;
+  const pct = Math.round((ahorroMes / consPromMes) * 100);
+
+  document.getElementById('hint-rango').textContent = 'Rango tarifario: '+rango+' dpts';
+  document.getElementById('r-kraibe-mes').textContent = clp(kraibeMes);
+  document.getElementById('r-kraibe-uf').textContent = ufVal.toFixed(1).replace('.',',')+' UF';
+  document.getElementById('r-kraibe-anual').textContent = 'Anual: '+clp(kraibeAnual);
+  document.getElementById('r-actual-mes').textContent = clp(consPromMes);
+  document.getElementById('r-actual-sub').textContent = cons+' × '+clp(sueldo);
+  document.getElementById('r-actual-anual').textContent = 'Anual: '+clp(consAnual);
+  document.getElementById('r-ahorro-mes').textContent = clp(Math.max(0,ahorroMes));
+  document.getElementById('r-ahorro-pct').textContent = Math.max(0,pct)+'% menos';
+  document.getElementById('r-ahorro-anual').textContent = 'Anual: '+clp(Math.max(0,ahorroAnual));
+  document.getElementById('d-uf').textContent = ufVal.toFixed(1).replace('.',',')+' UF';
+  document.getElementById('d-clp').textContent = clp(kraibeMes);
+  document.getElementById('d-total').textContent = clp(kraibeMes);
+  document.getElementById('d-cons-label').textContent = cons+' × '+clp(sueldo);
+  document.getElementById('d-cons-base').textContent = clp(consMes);
+  document.getElementById('d-finiquito').textContent = clp(finqAnual/12)+'/mes';
+  document.getElementById('d-cons-total').textContent = clp(consPromMes);
+}
+
+function syncDpts(v) { document.getElementById('in-dpts').value=v; calc(); }
+function syncDptsN(v) { const x=Math.max(1,Math.min(150,parseInt(v)||1)); document.getElementById('sl-dpts').value=x; calc(); }
+function syncCons(v) { document.getElementById('in-cons').value=v; calc(); }
+function syncConsN(v) { const x=Math.max(1,Math.min(20,parseInt(v)||1)); document.getElementById('sl-cons').value=x; calc(); }
+function setTurno(t,btn) { turno=t; document.querySelectorAll('.kc-tbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); document.getElementById('hint-turno').textContent=TURNO_TEXTO[t]; calc(); }
+
+function actualizarWA() {
+  const dpts = document.getElementById('in-dpts').value;
+  const cons = document.getElementById('in-cons').value;
+  const ahorro = document.getElementById('r-ahorro-mes').textContent;
+  const anual = document.getElementById('r-ahorro-anual').textContent.replace('Anual: ','');
+  const txt = encodeURIComponent('Hola SE Kraibe, usé la calculadora de ahorro para mi comunidad de '+dpts+' departamentos con '+cons+' conserjes. Ahorro mensual estimado: '+ahorro+' ('+anual+' al año). Me gustaría recibir una cotización formal.');
+  document.getElementById('wa-btn').href = 'https://wa.me/56951715595?text='+txt;
+}
+
+async function cargarUF() {
+  try {
+    const r = await fetch('https://mindicador.cl/api/uf');
+    const d = await r.json();
+    UF = Math.round(d.serie[0].valor);
+    const fecha = new Date(d.serie[0].fecha).toLocaleDateString('es-CL',{day:'numeric',month:'long'});
+    document.getElementById('uf-label').textContent = 'UF $'+UF.toLocaleString('es-CL')+' · actualizada '+fecha;
+    document.getElementById('uf-dot').classList.remove('loading');
+    calc();
+  } catch(e) {
+    document.getElementById('uf-label').textContent = 'UF $38.500 (referencia)';
+    document.getElementById('uf-dot').classList.remove('loading');
+  }
+}
+
+actualizarWA();
+cargarUF();
+calc();
+</script>
+</body>
+</html>
