@@ -61,7 +61,9 @@ git pull origin main
 | Verde lima | #CFEE9E | Highlights |
 | Blanco hueso | #FFFBFA | Fondo |
 
-**Tipografía:** Títulos Trebuchet MS — Cuerpo Calibri
+**Tipografía (manual de marca):** Manrope (títulos 700, cuerpo 400) + JetBrains Mono para cifras.
+> Pendiente: el sitio actual aún usa Trebuchet MS / Calibri. Migrar a Manrope. No usar Trebuchet/Calibri en contenido nuevo.
+> Sistema completo: skill `kraibe-diseno` y `OneDrive - Kraibe/01_INVERSIONES KRAIBE/MKT/Feña Rubio/Manual de marca/`.
 
 ---
 
